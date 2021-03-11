@@ -1,0 +1,43 @@
+<!--
+ * @Autor: Twang
+ * @Date: 2021-03-10 15:49:30
+ * @Description: 
+ * @Version: 1.0
+ * @LastEditors: Twang
+ * @LastEditTime: 2021-03-10 15:54:56
+ * @FilePath: \React\复习\3类中方法this的指向.html
+ * Copyright (C) 2021 Twang. All rights reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3类中方法this的指向</title>
+</head>
+<body>
+    <script>
+        
+        //创建一个Person类
+        class Person{
+            //构造器方法
+            constructor(name,age){
+                //构造器中的this是谁？---类的实例对象
+                this.name = name
+                this.age = age
+            }
+            //一般方法
+            study(){
+                //study方法放在了哪里？---类的原型对象上，供实例使用
+                //通过Person实例调用study时，study中的this就是Person实例
+                console.log(this)
+            }
+        }
+        const p1 = new Person('tom',18)
+        p1.study()//通过实例调用speak方法
+        const x = p1.study
+        x()
+    </script>
+</body>
+</html>
