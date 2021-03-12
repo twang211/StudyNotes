@@ -1,0 +1,46 @@
+<!--
+ * @Autor: Twang
+ * @Date: 2021-03-10 15:49:30
+ * @Description: 
+ * @Version: 1.0
+ * @LastEditors: Twang
+ * @LastEditTime: 2021-03-12 14:23:42
+ * @FilePath: \React\复习\4展开运算符.html
+ * Copyright (C) 2021 Twang. All rights reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开运算符</title>
+</head>
+<body>
+    <script>
+        let arr1=[1,3,5,7,9]
+        let arr2=[2,4,6,8,10]
+        console.log(...arr1)//展开一个数组
+        let arr3 = [...arr1,...arr2]//连接数组
+        console.log(arr3)
+        //在函数中使用    学习数组方法
+        function sum(...numbers){
+            console.log("@",numbers)
+            return numbers.reduce((preValue,currentValue)=>{
+                return preValue+ currentValue
+            })
+        }
+        console.log(sum(1,2,3,4))
+        //构造字面量对象时使用展开语法
+        let person = {name:'tom',age:18}
+        let person2 = {...person}
+        // let person2 = person
+        // //console.log(...person)//报错，展开运算符不能展开对象
+        person.name = 'jack'
+        console.log(person2.name)
+
+        //合并后的对象
+        let person3 = {...person,name:'jack'}
+    </script>
+</body>
+</html>

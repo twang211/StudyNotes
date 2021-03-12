@@ -1,0 +1,58 @@
+<!--
+ * @Autor: Twang
+ * @Date: 2021-03-05 15:29:07
+ * @Description: 
+ * @Version: 1.0
+ * @LastEditors: Twang
+ * @LastEditTime: 2021-03-12 15:25:22
+ * @FilePath: \React\demo\07react组件实例的三大核心属性2-props\1props的基本使用.html
+ * Copyright (C) 2021 Twang. All rights reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1props的基本使用</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx》》js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel"> /* react script type必须是babel */
+    //1.创建组件
+        class Person extends React.Component{
+            render(){
+                const {name,sex,age} = this.props
+                return (
+                    <ul>
+                        <li>姓名：{name}</li>
+                        <li>性别：{sex}</li>
+                        <li>年龄：{age+1}</li>
+                    </ul>
+                )
+            }
+        }
+        //2、渲染组件到页面
+        // ReactDOM.render(组件标签，容器)
+        ReactDOM.render(<Person name="tom" age={19} sex="男"/>,document.getElementById('test1'))
+        ReactDOM.render(<Person name="jack" age={18} sex="女"/>,document.getElementById('test2'))
+        const p = {name:"hash",age:18,sex:"男"}
+        ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
+        /*
+            
+        */
+    </script>
+</body>
+</html>
