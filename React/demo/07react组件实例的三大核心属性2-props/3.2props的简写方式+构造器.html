@@ -1,12 +1,12 @@
 <!--
  * @Autor: Twang
- * @Date: 2021-03-12 15:21:14
+ * @Date: 2021-03-16 14:35:23
  * @Description: 
  * @TODO: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-16 14:47:04
- * @FilePath: \React\demo\07react组件实例的三大核心属性2-props\2对props进行限制.html
+ * @LastEditTime: 2021-03-16 14:58:59
+ * @FilePath: \React\demo\07react组件实例的三大核心属性2-props\3.2props的简写方式+构造器.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 
@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2对props进行限制</title>
+    <title>3.1props的简写方式+构造器</title>
     <style>
     </style>
 </head>
@@ -37,6 +37,30 @@
     <script type="text/babel"> /* react script type必须是babel */
         //1.创建组件
         class Person extends React.Component{
+            // 通常，在 React 中，构造函数仅用于以下两种情况：
+            //     通过给 this.state 赋值对象来初始化内部 state。
+            //     为事件处理函数绑定实例
+            //只要写了构造器就必须写super()
+            //
+            constructor(props) {
+                //构造器是否接收props，是否传递给super，取决于：是否希望在构造器中通过this访问props
+                console.log(props)
+                super(props)
+                console.log('constructor',this.props)
+            }
+
+            //对标签属性进行类型、必要性的限制
+            static propTypes = {
+                name: PropTypes.string.isRequired,//限制name必传且为字符串
+                sex: PropTypes.string,//限制sex为字符串
+                age: PropTypes.number,//限制age为数值
+            }
+            //指定默认标签属性值
+            static defaultProps = {
+                sex: '男',//sex默认值为男
+                age: 18//age默认值为18
+            }
+
             render(){
                 const {name,sex,age} = this.props
                 //props是只读的
@@ -50,27 +74,10 @@
                 )
             }
         }
-        //对标签属性进行类型、必要性的限制
-        Person.propTypes = {
-            name: PropTypes.string.isRequired,//限制name必传且为字符串
-            sex: PropTypes.string,//限制sex为字符串
-            age: PropTypes.number,//限制age为数值
-            speak: PropTypes.func//限制speak为函数
-        }
-        //指定默认标签属性值
-        Person.defaultProps = {
-            sex: '男',//sex默认值为男
-            age: 18//age默认值为18
-        }
+   
         //2、渲染组件到页面
         // ReactDOM.render(组件标签，容器)
-        ReactDOM.render(<Person name="tom" age={19} speak={speak} />,document.getElementById('test1'))
-        ReactDOM.render(<Person name="jack" sex="女"/>,document.getElementById('test2'))
-        const p = {name:"hash",age:18,sex:"男"}
-        ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
-        function speak(){
-            console.log('我说话了！')
-        }
+        ReactDOM.render(<Person name="tom"/>,document.getElementById('test1'))
         /*
             学习展开运算符
         */

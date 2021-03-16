@@ -4,7 +4,7 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-11 14:31:26
+ * @LastEditTime: 2021-03-16 14:41:28
  * @FilePath: \React\复习\1类的基本知识.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
@@ -75,12 +75,13 @@
             }
             //类中可以直接写赋值语句，如下代码的含义是：给Car的实例对象添加一个属性，名a值为1
             a = 1
+            wheel = 4
+            static demo = 100
         }
 
         const c1 = new Car('奔驰c63',199)
-        const c2 = new Car('宝马',199)
         console.log(c1)
-        console.log(c2)
+        console.log(Car.demo    )
         /*
              总结：
              1、类中的构造器不是必须写的，要对实例进行一些初始化的操作，如添加指定属性时才写
