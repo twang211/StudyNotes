@@ -103,7 +103,41 @@
 
 ### 3、`refs`
 
-​	（待更新）
+	#### 理解
 
+​	组件内的标签可以定义ref属性来标识自己
 
+#### 编码
 
+ 1. 字符串形式的ref
+
+    ```
+    <input ref="input1"/>
+    ```
+
+    
+
+2. 回调形式的ref
+
+   ```
+   <input ref={(c)=>{this.input1 = c}}
+   ```
+
+   
+
+3. createRef创建ref容器·
+
+   ```
+   myRef = React.createRef() 
+   <input ref={this.myRef}/>
+   ```
+
+#### 事件处理
+
+1. 通过onXxx属性指定事件处理函数(注意大小写)
+
+   1) React使用的是自定义(合成)事件, 而不是使用的原生DOM事件
+
+   2) React中的事件是通过事件委托方式处理的(委托给组件最外层的元素)
+
+2. 通过event.target得到发生事件的DOM元素对象
