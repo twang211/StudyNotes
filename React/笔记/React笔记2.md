@@ -4,8 +4,8 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-09 09:50:02
- * @FilePath: \React\笔记\React笔记2.md
+ * @LastEditTime: 2021-07-21 14:06:54
+ * @FilePath: \StudyNotes\React\笔记\React笔记2.md
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 # React技术全家桶
@@ -16,7 +16,7 @@
         （3）babel.min.js：解析JSX语法代码转为JS代码的库。
     2、创建虚拟DOM的两种方式：
         （1）纯JS创建
-        （2）JSX创建
+        （2）JSX创建  ReactDOM.render(虚拟DOM，容器)
 
 ## JSX语法规则：
     1、定义虚拟DOM时，不要写引号

@@ -4,8 +4,8 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-08 15:41:22
- * @FilePath: \project\03jsx语法规则\03jsx语法规则.html
+ * @LastEditTime: 2021-07-22 14:16:34
+ * @FilePath: \StudyNotes\React\demo\03jsx语法规则\03jsx语法规则.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 <!DOCTYPE html>
@@ -45,9 +45,9 @@
                     <span style={{color:'white',fontSize:'29px'}}>{myData.toLowerCase()}</span>
                 </h2>
                 <input type="text"/>
-                <Good></Good>
-            </div>
-        )
+                </div>
+                )
+                // <Good></Good>
         //2、渲染虚拟DOM到页面
         // ReactDOM.render(虚拟DOM，容器)
         ReactDOM.render(VDOM,document.getElementById('test'))
@@ -58,9 +58,9 @@
             2、标签中混入JS表达式时要用｛｝
             3、样式的类名指定不能用class，要用className
             4、内联样式格式：style={{key:value}}
-            5、虚拟DOM只能有一个根标签
+            5、虚拟DOM必须只能有一个根标签
             6、标签必须闭合
-            7、标签首字母
+            7、标签首字母的规则：
                 （1）若小写字母开头，则将改标签为html中同名元素，若html中无该标签对应的同名元素，则报错
                 （2）若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
         */
