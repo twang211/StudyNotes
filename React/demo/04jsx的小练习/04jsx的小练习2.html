@@ -4,8 +4,8 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-07-23 10:57:57
- * @FilePath: \StudyNotes\React\demo\05react定义组件\1函数式组件.html
+ * @LastEditTime: 2021-07-23 10:57:04
+ * @FilePath: \StudyNotes\React\demo\04jsx的小练习\04jsx的小练习2.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 <!DOCTYPE html>
@@ -14,8 +14,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>函数式组件</title>
+    <title>04jsx的小练习</title>
     <style>
+        .title{
+            background-color: orange;
+            width: 300px;
+        }
     </style>
 </head>
 <body>
@@ -29,19 +33,35 @@
     <!-- 引入babel，用于将jsx》》js -->
     <script type="text/javascript" src="../js/babel.min.js"></script>
     <script type="text/babel"> /* react script type必须是babel */
-    
+
+
+        /*
+        一定注意区分：【js语句（代码）】与【js表达式】
+            1、表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+                下面这些都是表达式:
+                    (1)a
+                    (2)a+b
+                    (3)demo(1)
+                    (4)arr.map()
+                    (5)funuction test(){}
+            2、语句（代码）：
+                下面这些都是语句（代码）：
+                    (1)if(){}
+                    (2)for(){}
+                    (3)switch(){case:***}
+        */
+
+        //模拟数据
+        // const data = ['Anugular','React','Vue']
         const data = [
             {name:'Anugular',per:'20%',color:'orange'},
             {name:'React',per:'40%',color:'blue'},
             {name:'Vue',per:'40%',color:'green'},
         ]
-        //1.创建函数式组件
-        function MyComponent(){
-            console.log(this)//此处的this是undefind，因为babel编译后开启了严格模式
-            return(
+        //1.创建虚拟DOM
+        const VDOM = (
             <div>
-                <h1>我是用函数定义的组件（适用于【简单组件】的定义）</h1>
-                <h2>前端js框架列表</h2>
+                <h1>前端js框架列表</h1>
                 <ul>
                     {//这个位置写js的话只能写js表达式
                         data.map((item,index)=>{
@@ -55,16 +75,10 @@
                     }
                 </ul>
             </div>
-            ) 
-        }
-        //2、渲染组件到页面
-        // ReactDOM.render(组件标签，容器)
-        ReactDOM.render(<MyComponent/>,document.getElementById('test'))
-        /*
-            执行了ReactDOM.render(<MyComponent/>,document.getElementById('test'))之后，发生了什么：
-                1、React解析组件标签，找到了<MyComponent/>组件
-                2、发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，之后呈现在页面中。
-        */
+        )
+        //2、渲染虚拟DOM到页面
+        // ReactDOM.render(虚拟DOM，容器)
+        ReactDOM.render(VDOM,document.getElementById('test'))
     </script>
 </body>
 </html>
