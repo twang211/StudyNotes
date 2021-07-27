@@ -4,8 +4,8 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-11 14:12:29
- * @FilePath: \React\demo\06react组件实例的三大核心属性\1state的标准方式.html
+ * @LastEditTime: 2021-07-27 13:19:10
+ * @FilePath: \StudyNotes\React\demo\06react组件实例的三大核心属性1-state\1state的标准方式.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
                 //初始化状态
                 this.state = {
                     isHot:false,
-                    wind:'微风'
+                    wind:false
                 }
                 //解决changeWeather中this指向问题
                 this.changeWeather = this.changeWeather.bind(this)
@@ -47,7 +47,7 @@
                 console.log(this)
                 //读取状态
                 const {isHot, wind} = this.state
-                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind}</h1>
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind ? '无风' : '下雨'}</h1>
             }
             //changeWeather调用几次？-----点几次调用几次
             changeWeather(){
@@ -57,10 +57,13 @@
                 console.log('此处修改isHot的值')
                 
                 //获取原来的isHot值
-                const isHot = this.state.isHot
+                const {isHot, wind} = this.state
 
                 //严重注意：状态（state）必须是通过setState进行更新,且更新是一种合并不是替换。
-                this.setState({isHot:!isHot})
+                this.setState({
+                    isHot:!isHot,
+                    wind:!wind
+                })
                 
                 //严重注意：状态（state）不可直接更改，下面这行就是直接更改。
                 //this.state.isHot = !isHot //这个是错误写法

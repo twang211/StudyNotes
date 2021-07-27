@@ -4,8 +4,8 @@
  * @Description: 
  * @Version: 1.0
  * @LastEditors: Twang
- * @LastEditTime: 2021-03-11 14:38:34
- * @FilePath: \React\demo\06react组件实例的三大核心属性\2state的简写方式.html
+ * @LastEditTime: 2021-07-27 13:25:45
+ * @FilePath: \StudyNotes\React\demo\06react组件实例的三大核心属性1-state\2state的简写方式.html
  * Copyright (C) 2021 Twang. All rights reserved.
 -->
 <!DOCTYPE html>
@@ -34,16 +34,19 @@
             //初始化状态
             state = {
                 isHot:false,
-                wind:'微风'
+                wind:false
             }
             render(){
                 const {isHot, wind} = this.state
-                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind}</h1>
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind ? '无风' : '下雨'}</h1>
             }
             //自定义方法：要用赋值语句的形式+箭头函数【()=>】
             changeWeather = ()=> {
-                const isHot = this.state.isHot
-                this.setState({isHot:!isHot})
+                const {isHot, wind} = this.state
+                this.setState({
+                    isHot:!isHot,
+                    wind:!wind
+                })
             }
         }
         //2、渲染组件到页面
